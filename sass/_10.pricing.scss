@@ -1,0 +1,126 @@
+.section-pricing {
+  padding: 9.6rem 5vw;
+  grid-column: center-start/center-end;
+  & > .sub-heading {
+    padding-left: 3.2rem;
+  }
+
+  & > .heading-secondary {
+    padding: 0 4.8rem;
+  }
+  @include respond(laptop-L) {
+    padding: 8.4rem 5vw;
+  }
+
+  @include respond(tab-por) {
+    padding: 7.2rem 5vw;
+  }
+
+  @include respond(tab-sm) {
+    padding: 6rem 5vw;
+  }
+
+  @include respond(phone) {
+    padding-top: 4.8rem;
+    & > .heading-secondary {
+      padding: 0 2.4rem;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 9.6rem;
+    @include respond(tab-sm) {
+      grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
+      gap: 4.8rem;
+    }
+  }
+
+  &__plan {
+    width: 85%;
+    text-align: center;
+    border-radius: 1rem;
+    padding: 4.8rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    @include respond(tab-sm) {
+      width: 65%;
+      padding: 3.2rem;
+    }
+
+    &-name {
+      color: $color-primary-dark;
+      font-weight: font-weight(semi-bold);
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      margin-bottom: 3.2rem;
+
+      @include respond(phone) {
+        margin-top: 1rem;
+        margin-bottom: 1.6rem;
+      }
+    }
+    &-price {
+      font-size: 7.2rem;
+      font-weight: font-weight(semi-bold);
+      color: #333;
+      margin-bottom: 1.6rem;
+      span {
+        font-size: 3.6rem;
+        font-weight: font-weight(regular);
+        margin-right: 0.8rem;
+      }
+
+      @include respond(phone) {
+        font-size: 5.4rem;
+      }
+    }
+    &-text {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      color: #6f6f6f;
+    }
+    &-list {
+      margin-top: 4.8rem;
+      @extend %list;
+      @include respond(phone) {
+        margin-top: 2.4rem;
+      }
+
+      & > .btn {
+        margin-top: 1.6rem;
+        align-self: center;
+      }
+    }
+
+    &:first-child {
+      justify-self: end;
+      @include respond(tab-sm) {
+        justify-self: center;
+      }
+      border: 3px solid $color-primary-light;
+    }
+    &:last-child {
+      @include respond(tab-sm) {
+        justify-self: center;
+      }
+      background-color: $color-primary-light;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: "Best Value";
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.6rem;
+        font-weight: font-weight(semi-bold);
+        padding: 0.8rem 2.4rem;
+        background-color: #ffd43b;
+        color: #333;
+        border-radius: 0 0 2rem 2rem;
+      }
+    }
+  }
+}

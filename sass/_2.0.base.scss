@@ -1,0 +1,58 @@
+*,
+*::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+
+  @include respond(laptop-L) {
+    font-size: 56.25%;
+  }
+
+  @include respond(tab-por) {
+    font-size: 50%;
+  }
+  @include respond(phone) {
+    font-size: 37.5%;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns:
+    [container-start] 1fr [center-start] repeat(
+      10,
+      [col-start] minmax(min-content, 13rem) [col-end]
+    )
+    [center-end] 1fr [container-end];
+
+  grid-template-rows: repeat(auto-fit, min-content);
+}
+
+// Overlay
+
+@include respond(tab-por) {
+  .container__overlay {
+    position: fixed;
+    top: 0;
+    background-color: rgba($color-white, 0.8);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    height: 0;
+    z-index: -1;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .visible {
+    height: 100vh;
+    visibility: visible;
+
+    z-index: 5;
+  }
+}

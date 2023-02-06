@@ -1,0 +1,63 @@
+.section-features {
+  padding: 0 5vw;
+  grid-column: container-start/container-end;
+
+  .sub-heading {
+    text-align: center;
+    grid-column: 1/-1;
+    line-height: 1.4;
+    color: #777;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3.2rem;
+    @include respond(tab-por) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond(phone) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__feature {
+    padding: 2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.07);
+    .icon-feature {
+      color: $color-primary-dark;
+      width: 3.2rem;
+      height: 3.2rem;
+      background-color: $color-primary-light;
+      padding: 1.5rem;
+      border-radius: 50%;
+      margin-bottom: 3.2rem;
+
+      @include respond(tab-por) {
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-bottom: 2.4rem;
+      }
+    }
+
+    &-title {
+      font-size: 2.4rem;
+      color: #333;
+      font-weight: font-weight(semi-bold);
+      margin-bottom: 1.6rem;
+
+      @include respond(tab-por) {
+        font-size: 2rem;
+      }
+    }
+    &-text {
+      font-size: 1.8rem;
+      line-height: 1.8;
+      @include respond(tab-por) {
+        font-size: 1.6rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}

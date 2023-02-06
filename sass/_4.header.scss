@@ -1,0 +1,116 @@
+.header {
+  background-color: $color-primary-light;
+  padding: 0 5vw;
+  min-height: 7rem;
+  grid-column: container-start/container-end;
+
+  // @include respond(laptop-L) {
+  //   padding: 0 5vw;
+  // }
+
+  // mixins from 1.abstracts partial
+  @include flexbox(row, space-between, center);
+
+  &__navigation {
+    @include respond(tab-por) {
+      padding: 5rem;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -150%);
+      z-index: 10;
+      opacity: 0;
+      transition: all 0.25s 0.25s ease-in-out;
+      z-index: -1;
+    }
+
+    @include respond(phone) {
+      padding: 0;
+    }
+  }
+
+  &__list {
+    // mixins from 1.abstracts partial
+    @include list-style(1.8rem);
+    @include flexbox(row, flex-start, center);
+    gap: 3.2rem;
+
+    @include respond(tab-por) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      @extend %link;
+      font-size: 1.8rem;
+
+      @include respond(tab-por) {
+        font-size: 3.6rem;
+      }
+    }
+
+    &:hover {
+      color: $color-primary-dark;
+    }
+    &:active {
+      transform: translateY(3px);
+    }
+    //Modifier
+    &--btn {
+      padding: 1.2rem 2.4rem;
+      background-color: $color-primary;
+      border-radius: 1rem;
+      color: $color-white !important;
+    }
+  }
+
+  &__logo {
+    height: 3.2rem;
+  }
+}
+
+// Mobile Nav
+
+.header {
+  &__btn-mobile-nav {
+    position: fixed;
+    top: 3rem;
+    right: 5rem;
+    border: none;
+    cursor: pointer;
+    background: none;
+    display: none;
+    z-index: 10;
+    @include respond(tab-por) {
+      display: block;
+    }
+  }
+  &__icon-mobile-nav {
+    width: 4.8rem;
+    height: 4.8rem;
+    color: #333;
+    display: none;
+    transform: scale(0);
+    transition: all 0.5s ease-in-out;
+  }
+
+  // &__icon-mobile-nav[name="close-outline"] {
+  //   display: none;
+  // }
+}
+
+// ----> JavaScripts
+.active {
+  display: block;
+  transform: scale(1);
+}
+
+.opacity {
+  z-index: 10;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,130 @@
+// ---------------------------------> 1.0 VARIABLES
+
+// --->1.1 Colors
+
+$color-primary: #e67e22;
+$color-primary-light: #fdf2e9;
+$color-primary-light-1: #fae5d3;
+$color-primary-dark: #cf711f;
+$color-gray: #343a40;
+$color-white: #fff;
+
+// ---->1.2 Font-size
+/* FONT SIZE SYSTEM (px)
+      10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98     
+ */
+
+$xs_size: 1.2rem;
+$sm_size: 1.4rem;
+$reg-size: 1.6rem;
+$reg-size-big: 1.8rem;
+$md_size-sm: 2rem;
+$md_size-reg: 2.4rem;
+$md_size-big: 3.2rem;
+$l_size-sm: 3.6rem;
+$l_size-reg: 4.2rem;
+$l_size-big: 5.4rem;
+$xl-size-sm: 6.2rem;
+$xl-size-reg: 7.4rem;
+$xl-size-big: 8.6rem;
+$xxl-size: 9.8rem;
+
+$font-size-xl: calc(2.2rem + 2vw);
+$font-size-reg: calc(1.6rem + 0.5vw);
+
+// ----> 1.3 Font-weight
+
+$fontWeight: (
+  "regular": 400,
+  "medium": 500,
+  "semi-bold": 600,
+  "bold": 700,
+);
+
+@function font-weight($weight) {
+  @return map-get($map: $fontWeight, $key: $weight);
+}
+
+// ---------------- PLACEHOLDERS  :
+
+%link {
+  display: block;
+  text-decoration: none;
+  transition: all 0.25s;
+  color: #333;
+}
+
+%list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  & > li {
+    text-align: start;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    font-size: 1.8rem;
+    .icon-check {
+      width: 3rem;
+      height: 3rem;
+      color: $color-primary;
+    }
+  }
+}
+
+// MIXINS
+
+@mixin flexbox($direction: row, $valueX: center, $valueY: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $valueY;
+  justify-content: $valueX;
+}
+
+@mixin list-style($font-size: 1.6rem) {
+  list-style: none;
+  font-size: $font-size;
+}
+
+// Media Query - Mixin
+
+@mixin respond($breakpoint) {
+  // ----
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 34.375em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-sm {
+    @media only screen and (max-width: 46.875em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-por {
+    @media only screen and (max-width: 59.375em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == laptop-L {
+    @media only screen and (max-width: 81.25em) {
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 100em) {
+      @content;
+    }
+  }
+  @if $breakpoint == xl-desktop {
+    @media only screen and (min-width: 131.25em) {
+      @content;
+    }
+  }
+}
