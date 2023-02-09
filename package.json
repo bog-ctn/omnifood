@@ -6,12 +6,13 @@
   "scripts": {
     "watch:sass": "node-sass ./sass/main.scss ./up/css/style.css -w",
     "devserver": "live-server up",
-    "start": "npm-run-all --parallel watch:sass devserver ",
+    "babel:dev": "babel ./script/app.js --out-file=./up/app.js --presets=env --watch ",
+    "start": "npm-run-all --parallel watch:sass devserver babel:dev ",
     "compile:sass": "node-sass sass/main.scss css/style.comp.css",
     "prefix:css": "postcss  css/style.comp.css --use autoprefixer -b -o css/style.prefix.css ",
     "compress:css": "node-sass css/style.prefix.css up/css/style.css --output-style compressed",
     "build:css": "npm-run-all compile:sass prefix:css compress:css",
-    "babel:src": "babel ./script/app.js --out-file=./up/app.js --presets=env "
+    "babel:src": "babel ./script/app.js --out-file=./up/app.js --presets=env  "
   },
   "author": "",
   "license": "ISC",

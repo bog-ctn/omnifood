@@ -4,6 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Omnifood is an AI-powered food subscription that will make you eat healthy 365 days per year.It is tailored to your personal tastes and nutritional need "
+    />
+    <!-- FAVICON : BROWSER/APPLE/ANDROID-->
+    <link rel="icon" href="./img/favicon_sm.png" type="image/png" />
+    <link
+      rel="apple-touch-icon"
+      href="./img/apple-touch-icon.png"
+      type="image/png"
+    />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <!--  -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,10 +34,9 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script defer src="./app.js"></script>
-    <title>Omnifood</title>
+    <title>Omnifood &mdash; Never cook again!</title>
   </head>
   <body class="container">
-    <div class="container__overlay"></div>
     <header class="header">
       <img src="./img/omnifood-logo.png" alt="logo" class="header__logo" />
       <nav class="header__navigation">
@@ -96,11 +109,15 @@
         </div>
       </div>
       <div class="section-hero__gallery">
-        <img src="./img/hero.png" alt="Woman enjoying food" />
+        <picture>
+          <source srcset="./img/hero.webp" type="image/webp" />
+          <source srcset="./img/hero.png" type="image/png" />
+          <img src="./img/hero.png" alt="Woman enjoying food" />
+        </picture>
       </div>
     </section>
     <section class="section section-featured">
-      <h2 class="section-featured__title">as Fetured in</h2>
+      <h2 class="section-featured__title">as Featured in</h2>
       <div class="section-featured__logos">
         <img
           src="./img/logos/business-insider.png"
@@ -619,5 +636,13 @@
         </ul>
       </nav>
     </footer>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="container__overlay"></div>
+    <!-- Scroll Back to top BTN -->
+
+    <button class="scrollToTop">
+      <ion-icon name="arrow-up-outline" class="scrollToTop__icon"></ion-icon>
+    </button>
   </body>
 </html>

@@ -1,6 +1,13 @@
 "use strict";
 
-// -----
+document.addEventListener("click", function (e) {
+  if (e.target.tagName !== "A") return;
+
+  e.preventDefault();
+});
+
+/* --------- SMALL DEVICES NAVIGATION FUNCTIONALITY-------- */
+
 const toggleMobileNav = document.querySelector(".header__btn-mobile-nav");
 const navHideBtn = document.querySelector(".nav-hide");
 const navShowBtn = document.querySelector(".nav-show");
@@ -20,7 +27,7 @@ toggleMobileNav.addEventListener("click", function (e) {
     nav.classList.remove("opacity");
   }
 });
-
+// Close on click event on overlay
 overlay.addEventListener("click", function () {
   overlay.classList.remove("visible");
   nav.classList.remove("opacity");
@@ -28,6 +35,7 @@ overlay.addEventListener("click", function () {
   navShowBtn.classList.add("active");
 });
 
+// Close on keydown event
 document.addEventListener("keydown", function (e) {
   if (e.key !== "Escape") return;
   overlay.classList.remove("visible");
@@ -36,8 +44,7 @@ document.addEventListener("keydown", function (e) {
   navShowBtn.classList.add("active");
 });
 
-// Scroll-----
-
+/*---------------PAGE NAVIGATION--------------------- */
 nav.addEventListener("click", function (e) {
   e.preventDefault();
   if (!e.target.classList.contains("header__link")) return;
@@ -52,4 +59,43 @@ nav.addEventListener("click", function (e) {
     overlay.classList.remove("visible");
     nav.classList.remove("opacity");
   }, 500);
+});
+
+// Scroll Back to Top
+
+const observerCallBack = function (entries) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) {
+    document.querySelector(".scrollToTop").classList.add("scrollToTop-active");
+  } else {
+    document
+      .querySelector(".scrollToTop")
+      .classList.remove("scrollToTop-active");
+  }
+};
+
+const observeHero = new IntersectionObserver(observerCallBack, {
+  root: null,
+  threshold: 0,
+});
+observeHero.observe(document.querySelector(".section-hero"));
+
+document.querySelector(".scrollToTop").addEventListener("click", function () {
+  document
+    .querySelector(".header")
+    .scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+});
+
+// Hero Buttons functionality
+
+document.querySelector(".btn-cta").addEventListener("click", function (e) {
+  document
+    .querySelector(".section-meals")
+    .scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+});
+document.querySelector(".btn-outline").addEventListener("click", function (e) {
+  document
+    .querySelector(".section-how")
+    .scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 });
